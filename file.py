@@ -1,9 +1,8 @@
 from functools import wraps
 
 def greeter(func):
-    @wraps(func)
-    def inner():
-        data_from_function = func().title()
+    def inner(*args, **kwargs):
+        data_from_function = func(*args, **kwargs).title()
         result = "Aloha " + data_from_function
         return result
     
@@ -11,9 +10,8 @@ def greeter(func):
 
 
 def sums_of_str_elements_are_equal(func):
-    @wraps(func)
-    def inner():
-        data_from_func = func().split()
+    def inner(*args, **kwargs):
+        data_from_func = func(*args, **kwargs).split()
         first = 0
         second = 0
         if data_from_func[0][0] == '-':
